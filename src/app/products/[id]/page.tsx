@@ -1,18 +1,12 @@
-interface Props {
-  params: {
-    slug: string;
-  };
-}
-
-const Page = async ({ params }: Props) => {
-  const slug = params.slug; // No await needed!
-  console.log(slug);
-
+const page = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const params1 = await params;
+  const id = params1.id;
+  console.log(params1, params);
   return (
-    <div className="flex justify-center items-center w-screen h-screen">
-      Product Page: {slug}
+    <div className="justify-center items-center flex h-screen">
+      <h1>Product {id} page</h1>
     </div>
   );
 };
 
-export default Page;
+export default page;
