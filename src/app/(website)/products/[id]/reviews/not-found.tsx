@@ -1,15 +1,22 @@
-// app/not-found.tsx
-import Link from 'next/link';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
+"use client";
+
+import Link from "next/link";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { usePathname } from "next/navigation";
 
 export default function NotFound() {
+  const pathname = usePathname();
+  const paths = pathname.split("/");
+  console.log(paths);
   return (
     <div className="flex items-center justify-center min-h-screen bg-white px-4">
       <div className="text-center max-w-md">
         <h1 className="text-5xl font-bold text-gray-900 mb-4">404</h1>
-        <h2 className="text-2xl font-medium text-gray-800 mb-2">Page not found</h2>
+        <h2 className="text-2xl font-medium text-gray-800 mb-2">
+          review {paths[4]} not found for product {paths[2]}
+        </h2>
         <p className="text-gray-500 mb-8">
-          Sorry, we couldn't find the page you're looking for.
+          Sorry, we couldnt find the page youre looking for.
         </p>
         <div className="flex justify-center">
           <Link
