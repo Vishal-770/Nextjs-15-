@@ -5,7 +5,7 @@ const page = async ({ params }: { params: Promise<{ slug: string[] }> }) => {
   console.log(slug);
   return (
     <div className="justify-center items-center flex h-screen w-screen">
-      Docs Page {slug.length}
+      Docs Page {slug?.length}
     </div>
   );
 };

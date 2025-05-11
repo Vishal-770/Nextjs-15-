@@ -1,20 +1,21 @@
-'use client'
-import { useState } from 'react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-
+"use client";
+import { useState } from "react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const pathname = usePathname();
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   const navItems = [
-    { name: 'Home', href: '#' },
-    { name: 'About', href: '#' },
-    { name: 'Services', href: '#' },
-    { name: 'Portfolio', href: '#' },
-    { name: 'Contact', href: '#' },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/blogs" },
+    { name: "Portfolio", href: "/docs" },
+    { name: "Contact", href: "/profile" },
   ];
 
   return (
@@ -29,13 +30,17 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
-              <a
-                key={item.name}
+              <Link
+                key={item.href}
                 href={item.href}
-                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-800 transition duration-300"
+                className={`${
+                  pathname === item.href
+                    ? "text-blue-600 font-bold"
+                    : "text-gray-500"
+                }`}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
 

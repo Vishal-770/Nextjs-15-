@@ -1,4 +1,17 @@
-const page = async ({ params }: { params: Promise<{ id: string }> }) => {
+import { Metadata } from "next";
+
+type Params = { params: Promise<{ id: string }> };
+
+export const generateMetadata = async ({
+  params,
+}: Params): Promise<Metadata> => {
+  const id = (await params).id;
+  return {
+    title: `Product${id}`,
+  };
+};
+
+const page = async ({ params }: Params) => {
   const params1 = await params;
   const id = params1.id;
   console.log(params1, params);

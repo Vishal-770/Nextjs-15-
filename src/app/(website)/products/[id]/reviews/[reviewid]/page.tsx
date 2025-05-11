@@ -1,4 +1,4 @@
-import NotFound from "@/app/products/[id]/reviews/not-found";
+import NotFound from "@/app/(website)/products/[id]/reviews/not-found";
 
 const page = async ({
   params,
